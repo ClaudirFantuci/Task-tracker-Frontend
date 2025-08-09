@@ -13,7 +13,7 @@ const Recover = () => {
             <Header />
             <div className="main-content">
                 <FormContainer>
-                    <h2>Redefinir sua senha</h2>
+                    <h2 className="title-recover">Redefinir sua senha</h2>
                     <p className="text-recover">Digite o endereço de e-mail verificado da sua conta de usuário e lhe enviaremos um link para redefinir sua senha.</p>
                     <InputField
                         type="email"
