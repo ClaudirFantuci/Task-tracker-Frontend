@@ -8,9 +8,21 @@
 a {
     color: #4293F8;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .title-login {
     color: #9198A1;
     font-size: 40px;
+}
+
+@media (max-width: 550px) {
+    a {
+        font-size: 14px;
+    }
+
+    .title-login {
+        font-size: 35px;
+    }
+
 }

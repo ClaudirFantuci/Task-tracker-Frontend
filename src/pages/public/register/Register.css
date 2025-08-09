@@ -1,0 +1,15 @@
+.title-register {
+    color: #9198A1;
+    font-size: 40px;
+}
+
+@media (max-width: 550px) {
+    a {
+        font-size: 14px;
+    }
+
+    .title-register {
+        font-size: 26px;
+    }
+
+}

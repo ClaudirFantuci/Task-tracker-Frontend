@@ -13,3 +13,9 @@
     left: 0;
     padding-left: 50px;
 }
+
+@media (max-width: 550px) {
+    .Header {
+        padding-left: 20px;
+    }
+}

@@ -17,9 +17,9 @@
     align-items: center;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
     .form-container {
-        width: 95vw;
+        width: 90vw;
         height: auto;
         min-height: 400px;
         padding: 20px 10px;
