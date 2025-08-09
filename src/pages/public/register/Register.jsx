@@ -1,17 +1,17 @@
 import Footer from "../../components/footer/Footer";
 import FormContainer from "../../components/formContainer/FormContainer";
 import Header from "../../components/header/header";
-
-const Login = () => {
+import "Register.css";
+const Register = () => {
     return (
         <>
-            <Header />
-            <FormContainer>
-
-            </FormContainer>
-            <Footer />
+            <Headerer />
+            <div className="main-content">
+                <FormContainertainer />
+            </div>
+            <Footeroter />
         </>
     );
 };
 
-export default Login;
+export default Register;

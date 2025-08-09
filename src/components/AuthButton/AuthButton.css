@@ -1,0 +1,25 @@
+.auth-button {
+    font-size: 20px;
+    font-weight: bold;
+    width: 95%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #1f883d;
+    color: #fff;
+    background-color: #1f883d;
+    transition: 0.5s ease;
+    margin: 35px 0 10px 0;
+}
+
+.auth-button:hover {
+    background-color: #116329;
+    transition: 0.5s ease;
+}
+
+@media (max-width: 500px) {
+    .auth-button {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
