@@ -34,9 +34,5 @@ cd CodeChallenge-IFPR-NextAge-Frontend
 # 2. Instale as dependências
 npm install
 
-# 3. Configure as variáveis de ambiente (se necessário)
-# Exemplo: .env
-# VITE_API_URL=http://localhost:8080
-
-# 4. Inicie o servidor de desenvolvimento
+# 3. Inicie o servidor de desenvolvimento
 npm run dev
