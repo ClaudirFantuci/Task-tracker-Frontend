@@ -1,4 +1,4 @@
-import Api from "../api/api";
+import api from "../api/api";
 
 
 class BaseService {
@@ -20,7 +20,7 @@ class BaseService {
         return response
     }
     async getAll(data) {
-        const response = await this.api.getAll(this.endPoint);
+        const response = await this.api.get(this.endPoint);
         return response
     }
 }

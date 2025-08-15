@@ -1,13 +1,13 @@
 import "./InputField.css";
 
-const InputField = ({ type, placeholder, value, onChange, description }) => {
+const InputField = ({ type, placeholder, name, onChange, description }) => {
     return (
         <div className="input-field">
             {description && <p>{description}</p>}
             <input
                 type={type}
                 placeholder={placeholder}
-                value={value}
+                name={name}
                 onChange={onChange}
             />
         </div>

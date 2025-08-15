@@ -3,7 +3,7 @@ import AuthButton from "../../../components/AuthButton/AuthButton";
 import Footer from "../../../components/footer/Footer";
 import FormContainer from "../../../components/formContainer/FormContainer";
 import InputField from "../../../components/inputField/InputField";
-import Header from "../../../components/header/header";
+import Header from "../../../components/header/Header";
 import "./Recover.css"
 
 const Recover = () => {
@@ -18,7 +18,7 @@ const Recover = () => {
                     <InputField
                         type="email"
                         placeholder="E-mail"
-                        value={email}
+                        name={email}
                         onChange={e => setEmail(e.target.value)}
                         description={"E-mail"}
                     />
