@@ -1,0 +1,14 @@
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1vw;
+    padding: 1vw 2vw;
+}
+
+.actions {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
