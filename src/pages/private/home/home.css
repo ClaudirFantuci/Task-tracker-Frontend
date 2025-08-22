@@ -6,7 +6,7 @@ body {
 }
 
 .container-main {
-    min-height: 70vh;
+    min-height: 0vh;
     width: 80vw;
     background-color: #ffffff;
     margin: 10vh auto;
