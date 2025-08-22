@@ -6,7 +6,7 @@ body {
 }
 
 .container-main {
-    min-height: 80vh;
+    min-height: 70vh;
     width: 80vw;
     background-color: #ffffff;
     margin: 10vh auto;
@@ -19,13 +19,19 @@ body {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.todo-list {
+.task-list {
+    max-height: 400px;
     background-color: #EEEDED;
     height: 70vh;
     width: 90%;
     overflow-y: auto;
     border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+
+
 }
+
 
 .dialog-backdrop {
     position: fixed;
@@ -46,4 +52,50 @@ body {
     border-radius: 8px;
     min-width: 300px;
     position: relative;
+}
+
+.task-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 90%;
+    margin: 15px 0;
+    justify-content: flex-start;
+
+}
+
+
+.btn-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.btn-control:hover {
+    background: #f8f8f8;
+    transform: scale(1.02);
+}
+
+.filter select {
+    border: none;
+    border-radius: 25px;
+    padding: 8px 14px;
+    background: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.filter select:hover {
+    background: #f8f8f8;
+    transform: scale(1.02);
 }

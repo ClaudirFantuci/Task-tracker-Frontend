@@ -1,13 +1,15 @@
 import "./task.css"
+
 const Task = ({ task, handleComplete, handleRemove, handleStatusChange }) => {
     return (
-        <div className="task" key={task.id}>
-            <span className="task-name" style={{ flex: 2 }}>{task.name}</span>
-            <span style={{ flex: 1 }}>{new Date(task.start).toLocaleDateString()}</span>
-            <span style={{ flex: 1 }}>{new Date(task.ending).toLocaleDateString()}</span>
-            <span style={{ flex: 3 }}>{task.description}</span>
-            <span style={{ flex: 1 }}>
+        <div className={`task task-${task.status.toLowerCase()}`} key={task.id}>
+            <span className="task-name">{task.name}</span>
+            <span className="task-start">{new Date(task.start).toLocaleDateString()}</span>
+            <span className="task-ending">{new Date(task.ending).toLocaleDateString()}</span>
+            <span className="task-description">{task.description}</span>
+            <span className="task-status">
                 <select
+                    className={`status-select status-${task.status.toLowerCase()}`}
                     value={task.status}
                     onChange={e => handleStatusChange(task.id, e.target.value)}
                 >
