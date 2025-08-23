@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../../components/header/Header';
 import Footer from '../../../components/footer/Footer';
 import "./home.css"
@@ -6,38 +6,62 @@ import Task from '../../../components/task/task';
 import Taskform from '../../../components/taskForm/TaskForm';
 import Filter from '../../../components/filters/Filter';
 import { PlusCircle } from "lucide-react";
+import TaskService from '../../../service/TaskService';
 
 const Home = () => {
-    const [tasks, setTasks] = useState([
-        { id: 1, name: "Fazer o APP", start: "2024-06-01", ending: "2024-06-01", description: "Desenvolver o aplicativo conforme requisitos.", status: "ATRASADA" },
-        { id: 2, name: "Testar funcionalidades", start: "2024-06-02", ending: "2024-06-02", description: "Realizar testes nas funcionalidades principais.", status: "ANDAMENTO" },
-        { id: 3, name: "Revisar código", start: "2024-06-03", ending: "2024-06-03", description: "Revisar o código para garantir qualidade.", status: "PENDENTE" }
-    ]);
-
+    const [tasks, setTasks] = useState([]);
     const [open, setOpen] = useState(false);
     const [filter, setFilter] = useState("ALL");
+    const taskService = new TaskService();
+
+    const fetchTasks = async () => {
+        try {
+            const response = await taskService.getTasks(filter);
+            setTasks(response.data);
+        } catch (err) {
+            console.error("Erro ao carregar tarefas:", err);
+        }
+    };
+
+    useEffect(() => {
+        fetchTasks();
+    }, [filter]);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const addTask = (taskObj) => {
-        setTasks(prev => {
-            const newId = prev.length ? Math.max(...prev.map(t => t.id)) + 1 : 1;
-            return [...prev, { id: newId, ...taskObj }];
-        });
-        setOpen(false);
+    const addTask = async (taskObj) => {
+        try {
+            const response = await taskService.createTask(taskObj);
+            setTasks(prev => [...prev, response.data]);
+            setOpen(false);
+        } catch (err) {
+            console.error("Erro ao adicionar tarefa:", err);
+        }
     };
 
-    const handleComplete = (id) => {
-        setTasks(prev => prev.map(t => t.id === id ? { ...t, status: "CONCLUIDA" } : t));
+    const handleComplete = async (id) => {
+        await handleStatusChange(id, "CONCLUIDA");
     };
 
-    const handleRemove = (id) => {
-        setTasks(prev => prev.filter(t => t.id !== id));
+    const handleRemove = async (id) => {
+        try {
+            await taskService.deleteTask(id);
+            setTasks(prev => prev.filter(t => t.id !== id));
+        } catch (err) {
+            console.error("Erro ao remover tarefa:", err);
+        }
     };
 
-    const handleStatusChange = (id, newStatus) => {
-        setTasks(prev => prev.map(t => t.id === id ? { ...t, status: newStatus } : t));
+    const handleStatusChange = async (id, newStatus) => {
+        try {
+            const task = tasks.find(t => t.id === id);
+            const updatedTask = { ...task, status: newStatus };
+            const response = await taskService.updateTask(id, updatedTask);
+            setTasks(prev => prev.map(t => t.id === id ? response.data : t));
+        } catch (err) {
+            console.error("Erro ao atualizar status:", err);
+        }
     };
 
     return (
@@ -45,7 +69,6 @@ const Home = () => {
             <Header />
             <div className='container-main'>
                 <h1>Lista de Tarefas</h1>
-
 
                 <div className="task-controls">
                     <button className="btn-control" onClick={handleOpen}>
@@ -56,7 +79,6 @@ const Home = () => {
 
                 <div className='task-list'>
                     {tasks
-                        .filter(t => filter === "ALL" ? true : t.status === filter)
                         .map((t) => (
                             <Task
                                 key={t.id}
