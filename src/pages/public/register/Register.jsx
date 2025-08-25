@@ -32,7 +32,6 @@ const Register = () => {
 
         try {
             const response = await authenticationService.register(newUser);
-            console.log(response.data);
             if (response.status === 200 && response.data.token) {
                 localStorage.setItem("newUser", JSON.stringify(response.data));
                 navigate("/home");
@@ -40,7 +39,6 @@ const Register = () => {
                 alert("Erro ao fazer cadastro");
             }
         } catch (err) {
-            console.error(err);
             alert(err.response?.data?.mensagem || "Erro ao conectar com o servidor");
         }
     };

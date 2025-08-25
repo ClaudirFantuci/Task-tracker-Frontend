@@ -12,6 +12,9 @@ class AuthenticationService extends BaseService {
     async register(data) {
         return await this.api.post(`${this.endPoint}/register`, data);
     }
+    async logout() {
+        localStorage.removeItem("user");
+    }
 }
 
 export default AuthenticationService;

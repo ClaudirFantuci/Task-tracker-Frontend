@@ -24,7 +24,6 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await authenticationService.login(user);
-            console.log(response.data);
             if (response.status === 200 && response.data.token) {
                 localStorage.setItem("user", JSON.stringify(response.data));
                 navigate("/home");
