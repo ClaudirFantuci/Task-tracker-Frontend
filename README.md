@@ -25,6 +25,7 @@ Projeto em desenvolvimento.
 - npm ou yarn
 
 ## Backend ([repositório Backend](https://github.com/ClaudirFantuci/CodeChallenge-IFPR-NextAge-Backend))
+O backend deve estar em execução para que seja possível fazer login e utilizar o sistema. Crie uma conta para acessar a página inicial.
 
 ### Passos
 ```bash
