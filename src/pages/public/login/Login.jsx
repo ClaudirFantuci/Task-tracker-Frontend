@@ -57,7 +57,6 @@ const Login = () => {
                         onChange={handleChange}
                         description="Senha"
                     />
-                    <a href="/recover">Esqueceu sua senha?</a>
                     <AuthButton>Login</AuthButton>
                     <a href="/register">
                         <span style={{ color: "#9198A1" }}>Novo aqui? </span>Crie uma conta
