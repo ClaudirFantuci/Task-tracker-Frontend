@@ -4,7 +4,6 @@ import FormContainer from "../../../components/formContainer/FormContainer";
 import Header from "../../../components/header/Header";
 import InputField from "../../../components/inputField/InputField";
 import "./Login.css";
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthenticationService from "../../../service/AuthenticationService";

@@ -2,24 +2,24 @@ import BaseService from "./BaseService";
 
 class TaskService extends BaseService {
     constructor() {
-        super("/tasks");
+        super("/task");
     }
 
     async getTasks(status) {
-        const url = status && status !== "ALL" ? `${this.endPoint}?status=${status}` : this.endPoint;
-        return await this.api.get(url);
+        const query = status && status !== "ALL" ? `?status=${status}` : "";
+        return await this.api.get(`${this.endPoint}${query}`);
     }
 
-    async createTask(task) {
-        return await this.insert(task);
+    async createTask(data) {
+        return await this.api.post(this.endPoint, data);
     }
 
-    async updateTask(id, task) {
-        return await this.api.put(`${this.endPoint}/${id}`, task);
+    async updateTask(id, data) {
+        return await this.api.put(`${this.endPoint}/${id}`, data);
     }
 
     async deleteTask(id) {
-        return await this.delete(id);
+        return await this.api.delete(`${this.endPoint}/${id}`);
     }
 }
 

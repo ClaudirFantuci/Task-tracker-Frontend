@@ -30,7 +30,6 @@ const TaskForm = ({ addTask }) => {
         setEnding("");
         setStatus("");
         setDescription("");
-
     }
 
     return (
@@ -49,12 +48,14 @@ const TaskForm = ({ addTask }) => {
                     name="start"
                     value={start}
                     onChange={(e) => setStart(e.target.value)}
+                    className="date-input"
                 />
                 <InputField
                     type="date"
                     name="ending"
                     value={ending}
                     onChange={(e) => setEnding(e.target.value)}
+                    className="date-input"
                 />
                 <select
                     className="status"
@@ -74,7 +75,7 @@ const TaskForm = ({ addTask }) => {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
-                <button type="submit">Salvar</button>
+                <button className="task-form-button" type="submit">Salvar</button>
             </form>
         </div>
     )

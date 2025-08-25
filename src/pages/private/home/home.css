@@ -28,10 +28,58 @@ body {
     border-radius: 20px;
     padding: 10px;
     box-sizing: border-box;
-
-
 }
 
+.task-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1vw;
+    padding: 1vw 2vw;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin: 5px;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: calc(100% - 8vw);
+    box-sizing: border-box;
+}
+
+.task-header .task-name {
+    flex: 1;
+    border-left: 1px solid #000;
+    padding-left: 16px;
+}
+
+.task-header .task-start,
+.task-header .task-ending {
+    flex: 1;
+    border-left: 1px solid #000;
+    padding-left: 16px;
+}
+
+.task-header .task-description {
+    flex: 2;
+    border-left: 1px solid #000;
+    padding-left: 16px;
+}
+
+.task-header .task-status {
+    flex: 1;
+    text-align: center;
+    border-left: 1px solid #000;
+    padding-left: 16px;
+}
+
+.task-header .actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    border-left: 1px solid #000;
+    padding-left: 16px;
+}
 
 .dialog-backdrop {
     position: fixed;
@@ -61,9 +109,7 @@ body {
     width: 90%;
     margin: 15px 0;
     justify-content: flex-start;
-
 }
-
 
 .btn-control {
     display: flex;
@@ -98,4 +144,15 @@ body {
 .filter select:hover {
     background: #f8f8f8;
     transform: scale(1.02);
+}
+
+.filter-options {
+    display: flex;
+    gap: 15px;
+}
+
+@media (max-width: 500px) {
+    .task-header {
+        display: none;
+    }
 }

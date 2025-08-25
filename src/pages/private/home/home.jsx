@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../../components/header/Header';
-import Footer from '../../../components/footer/Footer';
 import "./home.css"
 import Task from '../../../components/task/task';
 import Taskform from '../../../components/taskForm/TaskForm';
@@ -12,6 +10,7 @@ const Home = () => {
     const [tasks, setTasks] = useState([]);
     const [open, setOpen] = useState(false);
     const [filter, setFilter] = useState("ALL");
+    const [sortBy, setSortBy] = useState("none");
     const taskService = new TaskService();
 
     const fetchTasks = async () => {
@@ -64,43 +63,62 @@ const Home = () => {
         }
     };
 
+    const getSortedTasks = () => {
+        let sorted = [...tasks];
+        if (sortBy === "name_asc") {
+            sorted.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (sortBy === "name_desc") {
+            sorted.sort((a, b) => b.name.localeCompare(a.name));
+        } else if (sortBy === "start_asc") {
+            sorted.sort((a, b) => new Date(a.start) - new Date(b.start));
+        } else if (sortBy === "start_desc") {
+            sorted.sort((a, b) => new Date(b.start) - new Date(a.start));
+        }
+        return sorted;
+    };
+
+    const sortedTasks = getSortedTasks();
+
     return (
-        <>
-            <Header />
-            <div className='container-main'>
-                <h1>Lista de Tarefas</h1>
+        <div className='container-main'>
+            <h1>Lista de Tarefas</h1>
 
-                <div className="task-controls">
-                    <button className="btn-control" onClick={handleOpen}>
-                        <PlusCircle size={18} /> Adicionar Tarefa
-                    </button>
-                    <Filter filter={filter} setFilter={setFilter} />
-                </div>
-
-                <div className='task-list'>
-                    {tasks
-                        .map((t) => (
-                            <Task
-                                key={t.id}
-                                task={t}
-                                handleStatusChange={handleStatusChange}
-                                handleComplete={handleComplete}
-                                handleRemove={handleRemove}
-                            />
-                        ))}
-                </div>
-
-                {open && (
-                    <div className="dialog-backdrop">
-                        <div className="dialog-content">
-                            <button className="dialog-close" onClick={handleClose}>Fechar</button>
-                            <Taskform addTask={addTask} />
-                        </div>
-                    </div>
-                )}
+            <div className="task-controls">
+                <button className="btn-control" onClick={handleOpen}>
+                    <PlusCircle size={18} /> Adicionar Tarefa
+                </button>
+                <Filter filter={filter} setFilter={setFilter} sortBy={sortBy} setSortBy={setSortBy} />
             </div>
-            <Footer />
-        </>
+
+            <div className="task-header">
+                <span className="task-name">Nome</span>
+                <span className="task-start">Data Início</span>
+                <span className="task-ending">Data Fim</span>
+                <span className="task-description">Descrição</span>
+                <span className="task-status">Status</span>
+            </div>
+            <div className='task-list'>
+                {sortedTasks
+                    .map((t) => (
+                        <Task
+                            key={t.id}
+                            task={t}
+                            handleStatusChange={handleStatusChange}
+                            handleComplete={handleComplete}
+                            handleRemove={handleRemove}
+                        />
+                    ))}
+            </div>
+
+            {open && (
+                <div className="dialog-backdrop">
+                    <div className="dialog-content">
+                        <button className="task-form-button" onClick={handleClose}>Fechar</button>
+                        <Taskform addTask={addTask} />
+                    </div>
+                </div>
+            )}
+        </div>
     );
 };
 

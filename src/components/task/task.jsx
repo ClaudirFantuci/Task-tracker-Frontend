@@ -1,3 +1,4 @@
+import { Check, Trash2 } from "lucide-react";
 import "./task.css"
 
 const Task = ({ task, handleComplete, handleRemove, handleStatusChange }) => {
@@ -20,11 +21,11 @@ const Task = ({ task, handleComplete, handleRemove, handleStatusChange }) => {
                 </select>
             </span>
             <span className="actions">
-                <button onClick={() => handleComplete(task.id)}>
-                    Completar
+                <button className="complete-btn" onClick={() => handleComplete(task.id)}>
+                    <Check size={12} />
                 </button>
-                <button onClick={() => handleRemove(task.id)}>
-                    Remover
+                <button className="remove-btn" onClick={() => handleRemove(task.id)}>
+                    <Trash2 size={12} />
                 </button>
             </span>
         </div>

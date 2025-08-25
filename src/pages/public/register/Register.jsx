@@ -9,7 +9,7 @@ import AuthenticationService from "../../../service/AuthenticationService";
 import AuthButton from "../../../components/AuthButton/AuthButton";
 
 const Register = () => {
-    const [newUser, setNewUser] = useState({ nome: "", email: "", password: "" });
+    const [newUser, setNewUser] = useState({ name: "", email: "", password: "" });
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
