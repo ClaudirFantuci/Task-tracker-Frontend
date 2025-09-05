@@ -1,6 +1,6 @@
 # To Do List - Frontend
 
-Este é o frontend do projeto **To Do List**, desenvolvido como parte do desafio do processo seletivo de estágio.  
+Este é o frontend do projeto **To Do List**.  
 O objetivo é fornecer uma interface intuitiva e responsiva para o gerenciamento de tarefas.
 
 Projeto em desenvolvimento.
